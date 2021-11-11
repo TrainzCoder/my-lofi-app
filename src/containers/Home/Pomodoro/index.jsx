@@ -10,7 +10,7 @@ const Pomodoro = () => {
       if (time === 0) {
         document.title = "Finished!!..time for Break 5 minutes";
       } else {
-        document.title = "Lofi Apps by TrainzCoder";
+        document.title = "Lofi App by TrainzCoder";
       }
     },
     [time]
@@ -58,17 +58,19 @@ const Pomodoro = () => {
 
   return (
     <section className="absolute left-1/2 mt-[15vh] rounded-md transform -translate-x-1/2 py-8 px-16 bg-[rgba(15,15,15,0.59)] backdrop-blur-sm text-gray-50">
-      <h2 className="text-[58px] tracking-wider">
-        {minuteFormat} : {secondFormat}
+      <h2 className="text-[58px]">
+        {minuteFormat}:{secondFormat}
       </h2>
 
-      <div className="flex justify-center gap-5 mt-5 text-[18px]">
+      <div className="flex justify-center gap-5 mt-1 text-[18px]">
         <button onClick={startTimer}>{running ? "Pause" : "Start"}</button>
 
         <button onClick={clearTimer}>Reset</button>
       </div>
 
-      <h3 className="mt-8 text-sm text-center">Pomodoro Timer</h3>
+      <h3 className="mt-8 text-sm tracking-wider text-center">
+        Pomodoro Timer
+      </h3>
     </section>
   );
 };

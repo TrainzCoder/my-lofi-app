@@ -1,13 +1,18 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import "./AudioPlayer.css";
+
 import music from "../../../assets/for_when_it_is_warmer.mp3";
 // import music from "../../../assets/cozy-acoustic.mp3";
 
 import { PlayIcon } from "@heroicons/react/solid";
 import { PauseIcon } from "@heroicons/react/solid";
+import { VolumeUpIcon } from "@heroicons/react/solid";
+import { VolumeOffIcon } from "@heroicons/react/solid";
 
 const AudioPlayer = () => {
   const audio = useRef(new Audio(music));
   const [isPlaying, setIsPlaying] = useState(false);
+  const [volumeValue, setVolumeValue] = useState(1);
   const fileName = music.split("/").slice(-1);
 
   if (typeof audio.current.loop == "boolean") {
@@ -28,8 +33,17 @@ const AudioPlayer = () => {
     setIsPlaying(!isPlaying);
   };
 
+  useEffect(() => {
+    const ele = document.querySelector(".bar .fill");
+    if (ele) {
+      ele.style.width = `${volumeValue * 100}%`;
+    }
+  });
+
   const volumeSet = (e) => {
     audio.current.volume = e.target.value;
+
+    setVolumeValue(e.target.value);
   };
 
   return (
@@ -51,16 +65,23 @@ const AudioPlayer = () => {
           )}
         </button>
 
-        <div className="flex items-center gap-6">
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.01"
-            onChange={volumeSet}
-          />
+        <div className="flex items-center gap-3 text-gray-50">
+          <VolumeOffIcon className="w-5 h-5" />
 
-          <p className="text-gray-50">00:00</p>
+          <div className="slider-container">
+            <span className="bar">
+              <span className="fill"></span>
+            </span>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              className="slider"
+              onChange={volumeSet}
+            />
+          </div>
+          <VolumeUpIcon className="w-5 h-5" />
         </div>
       </div>
     </section>

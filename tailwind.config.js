@@ -9,7 +9,10 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "ils": "url('./src/assets/main-bg.jpg')"
+        "ils": "url('./src/assets/my-bg3.gif')"
+      },
+      fontFamily: {
+        "stm": ["Share Tech Mono", "monospace"]
       }
     },
   },
