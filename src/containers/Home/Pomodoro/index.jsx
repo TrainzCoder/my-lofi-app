@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+
+import music from "../../../assets/alarm.mp3";
 
 const Pomodoro = () => {
-  const [time, setTime] = useState(1800); //1800
+  const [time, setTime] = useState(1500);
   const [running, setRunning] = useState(false);
   const [intervals, setIntervals] = useState(null);
+  const audio = useRef(new Audio(music));
 
   useEffect(
-    function changeTitle() {
+    function finish() {
       if (time === 0) {
         document.title = "Finished!!..time for Break 5 minutes";
+        audio.current.play();
       } else {
         document.title = "Lofi App by TrainzCoder";
+        audio.current.pause();
       }
     },
     [time]
@@ -46,7 +51,7 @@ const Pomodoro = () => {
 
   const clearTimer = () => {
     setRunning(false);
-    setTime(1800);
+    setTime(1500);
     stopInterval();
   };
 

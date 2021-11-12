@@ -27,6 +27,7 @@
   border-radius: 5px;
   outline: none;
   background-color: transparent;
+  cursor: pointer;
 }
 .slider-container .slider::-webkit-slider-thumb {
   -webkit-appearance: none;

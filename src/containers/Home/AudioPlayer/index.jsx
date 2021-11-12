@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./AudioPlayer.css";
 
-import music from "../../../assets/for_when_it_is_warmer.mp3";
-// import music from "../../../assets/cozy-acoustic.mp3";
+// import music from "../../../assets/for_when_it_is_warmer.mp3";
+import music from "../../../assets/velvet_garden.mp3";
 
 import { PlayIcon } from "@heroicons/react/solid";
 import { PauseIcon } from "@heroicons/react/solid";
